@@ -31,7 +31,8 @@ pipeline {
     }
     stage('configuration') {
       steps {
-        echo 'running script to configure the stack'
+        echo 'Cloning configuration from github enterprise'
+        echo 'Running script to configure the stack'
       }
     }
   }
