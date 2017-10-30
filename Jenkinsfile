@@ -12,6 +12,7 @@ pipeline {
           steps {
             echo 'creating AMI for stc-www'
             echo 'launching new instances for stc-www'
+            sh 'echo "Hello"'
           }
         }
         stage('Copy stc-batch') {
