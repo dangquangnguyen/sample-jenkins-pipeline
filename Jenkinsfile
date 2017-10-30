@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('preparation') {
+    stage('Preparation') {
       steps {
         echo 'running preparation scripts'
       }
@@ -29,10 +29,15 @@ pipeline {
         }
       }
     }
-    stage('configuration') {
+    stage('Configuration') {
       steps {
         echo 'Cloning configuration from github enterprise'
         echo 'Running script to configure the stack'
+      }
+    }
+    stage('Verify') {
+      steps {
+        input(message: 'Please confirm', id: 'confirm', ok: 'Confirm')
       }
     }
   }
