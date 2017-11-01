@@ -19,14 +19,14 @@ pipeline {
     }
     stage('Copy Environment') {
       parallel {
-        stage('Copy stc-www') {
+        stage('Copy webserver1') {
           steps {
             echo 'creating AMI for stc-www'
             echo 'launching new instances for stc-www'
             sh 'echo "Hello"'
           }
         }
-        stage('Copy stc-batch') {
+        stage('Copy webserver2') {
           steps {
             echo 'Creating AMI for stc-www'
             echo 'Launching EC2 instance for stc-batch'
@@ -37,6 +37,16 @@ pipeline {
             echo 'Create RDS snapshot'
             sh 'echo "Deleting existing RDS instance"'
             echo 'Launching new RDS instance from new created snapshot from PROD'
+          }
+        }
+        stage('Copy appserver') {
+          steps {
+            echo 'copying appserver instance'
+          }
+        }
+        stage('Copy fileserver') {
+          steps {
+            echo 'copying file server'
           }
         }
       }
