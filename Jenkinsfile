@@ -15,6 +15,7 @@ pipeline {
       }
       steps {
         echo 'running preparation scripts'
+        listAWSAccounts()
       }
     }
     stage('Copy Environment') {
