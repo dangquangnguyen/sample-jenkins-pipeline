@@ -2,6 +2,12 @@ pipeline {
   agent any
   stages {
     stage('Preparation') {
+      agent {
+        docker {
+          image 'alpine:3.5'
+        }
+        
+      }
       steps {
         echo 'running preparation scripts'
       }
