@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'alpine:3.5'
-    }
-    
-  }
+  agent any
   stages {
     stage('Preparation') {
       agent {
@@ -15,22 +10,22 @@ pipeline {
       }
       steps {
         echo 'running preparation scripts'
-        listAWSAccounts()
+        awsIdentity()
       }
     }
     stage('Copy Environment') {
       parallel {
         stage('Copy webserver1') {
           steps {
-            echo 'creating AMI for stc-www'
+            echo 'creating AMI for webserver1'
             echo 'launching new instances for stc-www'
             sh 'echo "Hello"'
           }
         }
         stage('Copy webserver2') {
           steps {
-            echo 'Creating AMI for stc-www'
-            echo 'Launching EC2 instance for stc-batch'
+            echo 'Creating AMI for webserver2'
+            echo 'Launching EC2 instance for webserver2'
           }
         }
         stage('Copy rds') {
