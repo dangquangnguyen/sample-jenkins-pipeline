@@ -55,7 +55,7 @@ pipeline {
     }
     stage('Verify') {
       steps {
-        input(message: 'Please confirm', id: 'confirm', ok: 'Confirm')
+        echo 'Verification'
       }
     }
   }
